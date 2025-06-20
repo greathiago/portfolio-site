@@ -1,98 +1,143 @@
-import React from "react";
-import "./App.css";
+// App.js
+import React, { useEffect } from "react";
+import { AiOutlineCode, AiFillGithub } from "react-icons/ai";
+import { FiSmartphone } from "react-icons/fi";
+import { animateScroll as scroll } from "react-scroll";
+import styles from "./App.module.css";
 
-function App() {
+const App = () => {
+  useEffect(() => {
+    scroll.scrollToTop();
+  }, []);
+
   return (
-    <div className="portfolio-container">
-      {/* Header Section */}
-      <header className="header">
-        <div className="header-content">
-          <img
-            src="https://via.placeholder.com/150"
-            alt="Foto Thiago"
-            className="profile-photo"
-          />
-          <div>
-            <h1>Thiago Moreira de Matos</h1>
-            <p className="subtitle">
-              Desenvolvedor Front-End | React, JavaScript, Node.js
-            </p>
+    <div className={styles.container}>
+      <nav className={styles.navbar}>
+        <img src="/tm_logo.png" alt="Logo" className={styles.logoImage} />
+        <div className={styles.navLinks}>
+          <a href="#top" className={styles.link}>
+            Topo
+          </a>
+          <a href="#profile" className={styles.link}>
+            Perfil
+          </a>
+          <a href="#experience" className={styles.link}>
+            Experiência
+          </a>
+          <a href="#skills" className={styles.link}>
+            Habilidades
+          </a>
+          <a href="#contact" className={styles.cta}>
+            Contato
+          </a>
+        </div>
+      </nav>
+
+      <header className={styles.hero}>
+        <div className={styles.heroContent}>
+          <h1 className={styles.title}>Thiago Moreira de Matos</h1>
+          <h2 className={styles.subtitle}>Desenvolvedor Front-end</h2>
+          <div className={styles.stats}>
+            <div className={styles.statItem}>
+              <AiOutlineCode size={32} />
+              <span>5+ Anos Exp</span>
+            </div>
+            <div className={styles.statItem}>
+              <FiSmartphone size={32} />
+              <span>50+ Componentes</span>
+            </div>
           </div>
         </div>
+        <div className={styles.scrollIndicator}></div>
       </header>
 
-      {/* About Section */}
-      <section className="about">
-        <h2>Sobre Mim</h2>
-        <p>
-          Sou desenvolvedor web com 5 anos de experiência em tecnologias como
-          React, JavaScript e Node.js, além de conhecimentos em C#, Java e
-          Python. Tenho como objetivo criar soluções visuais impactantes e
-          eficientes, sempre buscando inovação e qualidade.
-        </p>
-      </section>
-
-      {/* Experience Section */}
-      <section className="experience">
-        <h2>Experiência Profissional</h2>
-        <div className="card">
-          <h3>Ene-Soluções</h3>
-          <p>Desenvolvedor Front-End (2019 - 2024)</p>
-          <ul>
-            <li>
-              Otimização do site Algar Telecom, reduzindo carregamento em 50%.
-            </li>
-            <li>
-              Criação de 50+ componentes reutilizáveis para acelerar entregas.
-            </li>
-            <li>
-              Correção de 200+ bugs críticos, garantindo estabilidade do site.
-            </li>
-            <li>Colaboração com equipes de design em campanhas de sucesso.</li>
-          </ul>
-        </div>
-        <div className="card">
-          <h3>Sankhya - Jiva</h3>
-          <p>Estagiário (2018 - 2019)</p>
-          <ul>
-            <li>
-              Desenvolvimento de módulos de automação em Java para sistemas de
-              RH.
-            </li>
-            <li>
-              Melhoria de integrações, reduzindo tempos de adaptação em 10%.
-            </li>
-          </ul>
+      <section id="profile" className={`${styles.section} ${styles.profile}`}>
+        <div className={styles.sectionContent}>
+          <h3 className={styles.sectionTitle}>Sobre Mim</h3>
+          <p className={styles.bio}>
+            Desenvolvedor front-end apaixonado por criar experiências digitais
+            excepcionais. Especialista em React com 5 anos de experiência em
+            desenvolvimento de interfaces de alta performance. Comprometido com
+            código limpo e melhoria contínua.
+          </p>
+          <div className={styles.highlights}>
+            <div className={styles.highlightCard}>
+              <span>50%+</span>
+              <p>Redução no tempo de carregamento</p>
+            </div>
+            <div className={styles.highlightCard}>
+              <span>20%↑</span>
+              <p>Aumento no engajamento</p>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Skills Section */}
-      <section className="skills">
-        <h2>Habilidades Técnicas</h2>
-        <ul className="skills-list">
-          <li>HTML & CSS</li>
-          <li>JavaScript & React</li>
-          <li>Node.js</li>
-          <li>C#, Python, Java</li>
-          <li>Git</li>
-        </ul>
+      <section id="experience" className={styles.section}>
+        <div className={styles.sectionContent}>
+          <h3 className={styles.sectionTitle}>Experiência Profissional</h3>
+          <div className={styles.timeline}>
+            <div className={styles.timelineItem}>
+              <div className={styles.timelineContent}>
+                <h4>Ene-soluções</h4>
+                <span className={styles.timelineDate}>2019 - 2024</span>
+                <ul className={styles.timelineList}>
+                  <li>Otimização de performance (50%+ ganho)</li>
+                  <li>Desenvolvimento de componentes reutilizáveis</li>
+                  <li>Liderança técnica em projetos complexos</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
-      {/* Contact Section */}
-      <section className="contact">
-        <h2>Contato</h2>
-        <p>
-          Email:{" "}
-          <a href="mailto:thiago10.000@hotmail.com">thiago10.000@hotmail.com</a>
-        </p>
-        <p>
-          GitHub:{" "}
-          <a href="https://github.com/greathiago">github.com/greathiago</a>
-        </p>
-        <p>Telefone: +55 (34) 99124-0649</p>
+      <section id="skills" className={styles.section}>
+        <div className={styles.sectionContent}>
+          <h3 className={styles.sectionTitle}>Habilidades</h3>
+          <div className={styles.skillsGrid}>
+            {[
+              "React",
+              "JavaScript",
+              "TypeScript",
+              "Node.js",
+              "CSS3",
+              "Git",
+              "Python",
+              "HTML5",
+              "Sass",
+              "Redux",
+            ].map((skill) => (
+              <div key={skill} className={styles.skillCard}>
+                <div className={styles.skillIcon}></div>
+                <span>{skill}</span>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
+
+      <footer id="contact" className={styles.footer}>
+        <div className={styles.footerContent}>
+          <h3 className={styles.footerTitle}>Vamos conversar!</h3>
+          <div className={styles.contactInfo}>
+            <a
+              href="mailto:thiago10.000@hotmail.com"
+              className={styles.contactLink}
+            >
+              thiago10.000@hotmail.com&nbsp;
+            </a>
+            <a
+              href="https://github.com/greathiago"
+              className={styles.contactLink}
+            >
+              <AiFillGithub /> GitHub
+            </a>
+          </div>
+        </div>
+      </footer>
     </div>
   );
-}
+};
 
 export default App;

@@ -1,0 +1,304 @@
+:root {
+  --primary-blue: #3d5afe;
+  --secondary-blue: #e8f0fe;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  overflow-x: hidden;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 5%;
+  position: fixed;
+  width: 90%;
+  top: 0;
+  background: #e3f2fd;
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #2a5c8d;
+}
+
+.logoImage {
+  width: 40px;
+  height: 40px;
+  margin-right: 1rem;
+  object-fit: contain;
+  transition: transform 0.3s;
+  padding: 4px;
+}
+
+.navLinks {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.link {
+  color: #333;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.link:hover {
+  color: #2a5c8d;
+}
+
+.link::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #2a5c8d;
+  transition: width 0.3s;
+}
+
+.link:hover::after {
+  width: 100%;
+}
+
+.cta {
+  background: #2a5c8d;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 30px;
+  transition: transform 0.3s;
+}
+
+.cta:hover {
+  transform: translateY(-2px);
+}
+
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #2a5c8d 0%, #1a365d 100%);
+  color: white;
+  text-align: center;
+  padding-top: 80px;
+}
+
+.heroContent {
+  max-width: 800px;
+  padding: 2rem;
+}
+
+.title {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  animation: fadeInUp 1s ease;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 3rem;
+  opacity: 0.9;
+  animation: fadeInUp 1s 0.2s ease backwards;
+}
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 1.5rem;
+  column-gap: 3rem;
+  justify-content: center;
+  animation: fadeInUp 1s 0.4s ease backwards;
+}
+
+.statItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.2rem;
+}
+
+.scrollIndicator {
+  position: absolute;
+  bottom: 40px;
+  width: 30px;
+  height: 50px;
+  border: 2px solid white;
+  border-radius: 25px;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
+}
+
+.section {
+  padding: 8rem 5%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.profile {
+  background: #f8f9fa;
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: #2a5c8d;
+}
+
+.sectionContent {
+  width: 90vw;
+}
+
+.bio {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  max-width: 800px;
+  margin-bottom: 3rem;
+}
+
+.highlights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.highlightCard {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.highlightCard:hover {
+  transform: translateY(-10px);
+}
+
+.skillsGrid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(160px, 1fr));
+  gap: 2rem;
+}
+
+.skillCard {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+}
+
+.skillCard:hover {
+  background: #2a5c8d;
+  color: white;
+}
+
+.footer {
+  background: #1a365d;
+  color: white;
+  padding: 5rem 5%;
+  text-align: center;
+}
+
+.contactLink {
+  color: #e0e8f0;
+}
+
+@media (max-width: 1024px) {
+  .skillsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .navLinks {
+    display: none;
+  }
+
+  .skillsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* App.module.css */
+.logoImage {
+  width: 50px;
+  height: 50px;
+  transition: transform 0.3s;
+}
+
+.logoImage:hover {
+  transform: rotate(15deg);
+}
+
+.hero {
+  background: linear-gradient(135deg, var(--primary-blue) 0%, #1a365d 100%);
+}
+
+.cta {
+  background: var(--primary-blue);
+}
+
+.sectionTitle {
+  color: var(--primary-blue);
+}
+
+.skillCard:hover {
+  background: var(--primary-blue);
+}
+
+.scrollIndicator {
+  border-color: var(--primary-blue);
+}
+
+.timelineItem::before {
+  background: var(--primary-blue);
+}
+
+.heroLogo {
+  width: 120px;
+  height: 120px;
+  margin-bottom: 2rem;
+  filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
+}
