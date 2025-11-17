@@ -1,4 +1,4 @@
-// src/App.js
+
 import React from "react";
 import { AiOutlineCode, AiFillGithub, AiFillLinkedin } from "react-icons/ai";
 import { FiSmartphone } from "react-icons/fi";
@@ -7,45 +7,46 @@ import ProjectCard from "./components/ProjectCard";
 
 import logo from "./tm_logo.png";
 
-// Dados dos projetos - substitua com seus próprios projetos!
 const projects = [
   {
     type: "interactive", // Este projeto será interativo via iframe
     image: "https://placehold.co/600x400/2a5c8d/ffffff?text=Tic+Tac+Toe",
-
-    // image: "https://github.com/greathiago/react-tic-tac-toe/raw/main/public/tictactoe-screenshot.png", // Exemplo de URL de imagem do repositório
     title: "Jogo da Velha (Tic-Tac-Toe)",
     description:
       "Um clássico jogo da velha desenvolvido para demonstrar lógica de estado, componentização e manipulação de eventos em React. Jogue diretamente aqui no portfólio!",
     tech: ["React", "JavaScript", "CSS Modules"],
-    liveLink: "https://greathiago.github.io/tic-tac-toe/", // URL final do projeto no GitHub Pages
+    liveLink: "https://greathiago.github.io/tic-tac-toe/",
     repoLink: "https://github.com/greathiago/tic-tac-toe",
   },
   {
     type: "demo", // Este projeto será uma demo via GIF
     image: "https://placehold.co/600x400/3d5afe/ffffff?text=API+de+Produtos",
-
-    // image: "https://github.com/greathiago/java-product-api/raw/main/public/product-api-demo.gif", // URL do GIF de demonstração
     title: "API de Produtos com Java",
     description:
       "Uma API RESTful completa construída com Spring Boot para gerenciar um catálogo de produtos. Implementa todas as operações CRUD (Criar, Ler, Atualizar, Deletar) e utiliza um banco de dados em memória.",
     tech: ["Java", "Spring Boot", "Maven", "API Rest", "H2 Database"],
-    liveLink:
-      "https://github.com/greathiago/java-product-api/raw/main/public/product-api-demo.gif", // O link 'live' aponta para o GIF para o modal
+    // liveLink: "https://github.com/greathiago/java-product-api/raw/main/public/product-api-demo.gif",
     repoLink: "https://github.com/greathiago/java-product-api",
   },
   {
-    type: "demo", // Este projeto também será uma demo via GIF
+    type: "demo",
     image: "https://placehold.co/600x400/e8f0fe/1a365d?text=Gerador+de+Citações",
-
-    // image: "https://github.com/greathiago/python-quote-api/raw/main/public/quote-api-demo.gif", // URL do GIF de demonstração
     title: "Gerador de Citações com Python",
     description:
       "Uma API leve e rápida desenvolvida com Flask que retorna citações inspiradoras de forma aleatória. Um ótimo exemplo de microsserviço e manipulação de dados em Python.",
     tech: ["Python", "Flask", "API Rest", "JSON"],
-    liveLink:
-      "https://github.com/greathiago/python-quote-api/raw/main/public/quote-api-demo.gif", // O link 'live' aponta para o GIF para o modal
+    // liveLink: "https://github.com/greathiago/python-quote-api/raw/main/public/quote-api-demo.gif",
     repoLink: "https://github.com/greathiago/python-quote-api",
+  },
+  {
+    type: "interactive",
+    image: "https://placehold.co/600x400/2a5c8d/ffffff?text=Taise+Silva+Imoveis",
+    title: "Site Taise Silva Imóveis",
+    description:
+      "Um site completo e funcional construído com Nextjs para uma corretora armazenar seus imóveis, vendido à ela a um custo benefício melhor que o mercado.",
+    tech: ["Nextjs", "JavaScript", "Tailwind CSS"],
+    liveLink: "https://taisesilvaimoveis.com.br",
+    repoLink: "https://github.com/greathiago/imoveis_ts",
   },
 ];
 
