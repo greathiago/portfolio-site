@@ -1,11 +1,9 @@
+import { AiOutlineCode, AiFillGithub, AiFillLinkedin } from 'react-icons/ai';
+import { FiSmartphone } from 'react-icons/fi';
+import styles from './App.module.css';
+import ProjectCard from './components/ProjectCard';
 
-import React from "react";
-import { AiOutlineCode, AiFillGithub, AiFillLinkedin } from "react-icons/ai";
-import { FiSmartphone } from "react-icons/fi";
-import styles from "./App.module.css";
-import ProjectCard from "./components/ProjectCard";
-
-import logo from "./tm_logo.png";
+const logo = process.env.PUBLIC_URL + '/tm_logo.png';
 
 const projects = [
   {
@@ -30,7 +28,8 @@ const projects = [
   },
   {
     type: "demo",
-    image: "https://placehold.co/600x400/e8f0fe/1a365d?text=Gerador+de+Citações",
+    image:
+      "https://placehold.co/600x400/e8f0fe/1a365d?text=Gerador+de+Citações",
     title: "Gerador de Citações com Python",
     description:
       "Uma API leve e rápida desenvolvida com Flask que retorna citações inspiradoras de forma aleatória. Um ótimo exemplo de microsserviço e manipulação de dados em Python.",
@@ -40,11 +39,11 @@ const projects = [
   },
   {
     type: "interactive",
-    image: "https://placehold.co/600x400/2a5c8d/ffffff?text=Taise+Silva+Imoveis",
-    title: "Site Taise Silva Imóveis",
+    image: process.env.PUBLIC_URL + "/image1.png",
+    title: "Plataforma Imobiliária Taise Silva",
     description:
-      "Um site completo e funcional construído com Nextjs para uma corretora armazenar seus imóveis, vendido à ela a um custo benefício melhor que o mercado.",
-    tech: ["Nextjs", "JavaScript", "Tailwind CSS"],
+      "Solução Full Stack desenvolvida para uma corretora de imóveis. O sistema oferece um catálogo dinâmico com filtros avançados, performance otimizada para SEO e um CMS headless (Sanity) para gestão autônoma de conteúdo pelo cliente.",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "Sanity CMS"],
     liveLink: "https://taisesilvaimoveis.com.br",
     repoLink: "https://github.com/greathiago/imoveis_ts",
   },
@@ -53,26 +52,24 @@ const projects = [
 const App = () => {
   return (
     <div className={styles.container}>
+      {/* ELEMENTOS DO FUNDO */}
+      <div className={styles.spaceBackground}>
+        <div className={styles.stars1}></div>
+        <div className={styles.stars2}></div>
+        <div className={styles.stars3}></div>
+      </div>
+
       <nav className={styles.navbar}>
-        {/* MODIFICAÇÃO: Adicionado o contêiner interno */}
         <div className={styles.navbarInner}>
           <div className={styles.logoContainer}>
             <img src={logo} alt="Logo" className={styles.logoImage} />
             <span className={styles.logo}>Thiago Matos</span>
           </div>
           <div className={styles.navLinks}>
-            <a href="#about" className={styles.link}>
-              Sobre
-            </a>
-            <a href="#projects" className={styles.link}>
-              Projetos
-            </a>
-            <a href="#skills" className={styles.link}>
-              Habilidades
-            </a>
-            <a href="#contact" className={styles.cta}>
-              Contato
-            </a>
+            <a href="#about" className={styles.link}>Sobre</a>
+            <a href="#projects" className={styles.link}>Projetos</a>
+            <a href="#skills" className={styles.link}>Habilidades</a>
+            <a href="#contact" className={styles.cta}>Contato</a>
           </div>
         </div>
       </nav>
@@ -82,17 +79,17 @@ const App = () => {
           <img src={logo} alt="Logo Hero" className={styles.heroLogo} />
           <h1 className={styles.title}>Thiago Moreira de Matos</h1>
           <h2 className={styles.subtitle}>
-            Transformando ideias em código. Desenvolvedor Front-end especialista
-            em React.
+            Desenvolvedor Front-end Especialista em React.<br />
+            Transformando ideias complexas em experiências digitais de alta performance.
           </h2>
           <div className={styles.stats}>
             <div className={styles.statItem}>
-              <AiOutlineCode size={32} />
+              <AiOutlineCode size={24} />
               <span>5+ Anos de Experiência</span>
             </div>
             <div className={styles.statItem}>
-              <FiSmartphone size={32} />
-              <span>50+ Componentes Reutilizáveis</span>
+              <FiSmartphone size={24} />
+              <span>Foco em UX/UI</span>
             </div>
           </div>
         </div>
@@ -114,38 +111,26 @@ const App = () => {
         <div className={styles.sectionContent}>
           <h3 className={styles.sectionTitle}>Sobre Mim</h3>
           <p className={styles.bio}>
-            Com 5 anos de experiência, sou um desenvolvedor front-end focado em
-            criar experiências digitais excepcionais e de alta performance.
-            Minha especialidade é o ecossistema React, mas também tenho sólidos
-            conhecimentos em C#, Java e Python.
-            <br />
-            <br />
-            Na <strong>Ene-soluções</strong>, terceirizado para a{" "}
-            <strong>Algar Telecom</strong>, liderei iniciativas que resultaram
-            em uma <strong>redução de 50% no tempo de carregamento</strong> do
-            site e na implementação de mais de 50 componentes reutilizáveis.
-            Minha paixão é resolver problemas complexos e colaborar com equipes
-            para entregar produtos de alta qualidade que geram resultados.
+            Com 5 anos de experiência, sou um desenvolvedor front-end focado em criar interfaces modernas, escaláveis e intuitivas. Minha especialidade é o ecossistema React, mas possuo sólidos conhecimentos em C#, Java e Python, o que me permite ter uma visão holística do desenvolvimento de software.
+            <br /><br />
+            Na <strong>Ene-soluções</strong> (Algar Telecom), liderei iniciativas técnicas que resultaram em uma <strong>redução de 50% no tempo de carregamento</strong> das aplicações críticas e na padronização de componentes de interface. Sou apaixonado por código limpo, performance e por entregar valor real ao negócio.
           </p>
           <div className={styles.highlights}>
             <div className={styles.highlightCard}>
               <h4>Ene-soluções (Algar Telecom)</h4>
               <span className={styles.timelineDate}>2019 - 2024</span>
               <ul className={styles.timelineList}>
-                <li>Otimização de performance (+50% de ganho).</li>
-                <li>Desenvolvimento de componentes reutilizáveis.</li>
-                <li>Liderança técnica em projetos complexos.</li>
+                <li>Otimização de performance (+50% de ganho em speed index).</li>
+                <li>Arquitetura e desenvolvimento de componentes reutilizáveis.</li>
+                <li>Liderança técnica e mentoring de desenvolvedores júnior.</li>
               </ul>
             </div>
             <div className={styles.highlightCard}>
               <h4>Sankhya - Jiva (Estágio)</h4>
               <span className={styles.timelineDate}>2018 - 2019</span>
               <ul className={styles.timelineList}>
-                <li>
-                  Desenvolvimento de módulos de automação em Java para o sistema
-                  de RH.
-                </li>
-                <li>Redução de 15% no tempo de processamento de tarefas.</li>
+                <li>Desenvolvimento de módulos de automação em Java.</li>
+                <li>Otimização de processos internos e redução de tarefas manuais.</li>
               </ul>
             </div>
           </div>
@@ -154,21 +139,11 @@ const App = () => {
 
       <section id="skills" className={styles.section}>
         <div className={styles.sectionContent}>
-          <h3 className={styles.sectionTitle}>Tecnologias</h3>
+          <h3 className={styles.sectionTitle}>Habilidades Técnicas</h3>
           <div className={styles.skillsGrid}>
             {[
-              "React",
-              "JavaScript",
-              "TypeScript",
-              "Node.js",
-              "CSS3",
-              "Git",
-              "Python",
-              "HTML5",
-              "Sass",
-              "Redux",
-              "C#",
-              "Java",
+              "React", "JavaScript", "TypeScript", "Node.js", "CSS3",
+              "Git", "Python", "HTML5", "Sass", "Redux", "C#", "Java"
             ].map((skill) => (
               <div key={skill} className={styles.skillCard}>
                 <span>{skill}</span>
@@ -180,32 +155,19 @@ const App = () => {
 
       <footer id="contact" className={styles.footer}>
         <div className={styles.footerContent}>
-          <h3 className={styles.footerTitle}>Gostou do que viu?</h3>
+          <h3 className={styles.footerTitle}>Vamos Conversar?</h3>
           <p className={styles.footerText}>
-            Estou disponível para novos desafios e projetos. Vamos conversar!
+            Estou disponível para novos desafios e oportunidades. Entre em contato para discutirmos como posso agregar valor ao seu time.
           </p>
           <div className={styles.contactInfo}>
-            <a
-              href="mailto:thiago10.000@hotmail.com"
-              className={styles.contactLink}
-            >
+            <a href="mailto:thiago10.000@hotmail.com" className={styles.contactLink}>
               thiago10.000@hotmail.com
             </a>
             <div className={styles.socialLinks}>
-              <a
-                href="https://github.com/greathiago"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.socialIcon}
-              >
+              <a href="https://github.com/greathiago" target="_blank" rel="noopener noreferrer" className={styles.socialIcon}>
                 <AiFillGithub size={32} />
               </a>
-              <a
-                href="https://www.linkedin.com/in/thiago-moreira-de-matos-a92437172/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.socialIcon}
-              >
+               <a href="https://www.linkedin.com/in/thiago-moreira-687976171" target="_blank" rel="noopener noreferrer" className={styles.socialIcon}>
                 <AiFillLinkedin size={32} />
               </a>
             </div>

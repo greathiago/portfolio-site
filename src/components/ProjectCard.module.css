@@ -2,22 +2,29 @@
 
 :root {
   --primary-blue: #3d5afe;
+  --accent-color: #00e5ff;
+  --glass-bg-card: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
 }
 
 .card {
-  background: #ffffff;
+  background: var(--glass-bg-card);
   border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(42, 92, 141, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid #e0e8f0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s;
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(5px);
 }
 
 .card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(42, 92, 141, 0.2);
+  box-shadow: 0 20px 40px rgba(0, 229, 255, 0.15);
+  border-color: var(--primary-blue);
 }
 
 .thumbnailContainer {
@@ -30,16 +37,18 @@
   height: 220px;
   object-fit: cover;
   display: block;
-  border-bottom: 1px solid #e0e8f0;
+  border-bottom: 1px solid var(--glass-border);
+  transition: opacity 0.3s;
 }
 
+/* Overlay agora tem um gradiente bonito */
 .overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(26, 54, 93, 0.7);
+  background: linear-gradient(to bottom, rgba(61, 90, 254, 0.8), rgba(0, 0, 0, 0.9));
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -47,6 +56,7 @@
   color: white;
   opacity: 0;
   transition: opacity 0.3s ease;
+  backdrop-filter: blur(3px);
 }
 
 .thumbnailContainer:hover .overlay {
@@ -55,6 +65,8 @@
 
 .expandIcon {
   margin-bottom: 0.5rem;
+  color: var(--accent-color);
+  filter: drop-shadow(0 0 5px var(--accent-color));
 }
 
 .cardContent {
@@ -66,15 +78,16 @@
 
 .cardTitle {
   font-size: 1.5rem;
-  color: #1a365d;
+  color: var(--text-primary);
   margin-top: 0;
   margin-bottom: 1rem;
+  font-weight: 700;
 }
 
 .cardDescription {
   font-size: 1rem;
   line-height: 1.6;
-  color: #555;
+  color: var(--text-secondary);
   flex-grow: 1;
   margin-bottom: 1.5rem;
 }
@@ -87,12 +100,13 @@
 }
 
 .techTag {
-  background-color: #e8f0fe;
-  color: var(--primary-blue);
+  background-color: rgba(61, 90, 254, 0.2);
+  color: var(--accent-color);
   padding: 0.3rem 0.8rem;
   border-radius: 20px;
   font-size: 0.8rem;
   font-weight: 500;
+  border: 1px solid rgba(61, 90, 254, 0.3);
 }
 
 .cardLinks {
@@ -107,13 +121,14 @@
   align-items: center;
   gap: 0.5rem;
   text-decoration: none;
-  color: #333;
+  color: var(--text-primary);
   font-weight: 600;
   transition: color 0.3s;
 }
 
 .link:hover {
-  color: var(--primary-blue);
+  color: var(--accent-color);
+  text-shadow: 0 0 8px var(--accent-color);
 }
 
 /* --- Estilos do Modal --- */
@@ -123,12 +138,12 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(0, 0, 0, 0.9);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 2000;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(10px);
 }
 
 .modalContent {
@@ -136,17 +151,19 @@
   width: 90%;
   height: 90%;
   max-width: 1200px;
-  background: #1e1e1e;
-  padding: 20px;
+  background: #0B0D17;
+  padding: 5px;
   border-radius: 10px;
+  border: 1px solid var(--accent-color);
+  box-shadow: 0 0 30px rgba(61, 90, 254, 0.3);
 }
 
 .closeButton {
   position: absolute;
   top: -15px;
   right: -15px;
-  background: white;
-  color: black;
+  background: var(--accent-color);
+  color: #000;
   border: none;
   border-radius: 50%;
   width: 40px;
@@ -156,18 +173,26 @@
   justify-content: center;
   align-items: center;
   font-size: 1.5rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.5);
+  z-index: 2001;
+  transition: transform 0.2s;
+}
+
+.closeButton:hover {
+  transform: scale(1.1);
 }
 
 .modalFrame {
   width: 100%;
   height: 100%;
   border: none;
-  background: white; /* Cor de fundo enquanto o iframe carrega */
+  background: #fff; /* Iframe precisa de fundo branco se o site carregado for transparente */
+  border-radius: 8px;
 }
 
 .modalImage {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  border-radius: 8px;
 }

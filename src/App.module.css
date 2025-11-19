@@ -1,29 +1,113 @@
-/* src/App.module.css */
-
 :root {
-  --primary-blue: #3d5afe;
-  --secondary-blue: #e8f0fe;
-  --dark-blue: #1a365d;
-  --light-text: #e0e8f0;
-  --dark-text: #333;
+  --primary-color: #3d5afe;
+  --accent-color: #00e5ff;
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --text-primary: #ffffff;
+  --text-secondary: #a0a0a0;
 }
 
 .container {
   max-width: 1440px;
   margin: 0 auto;
   overflow-x: hidden;
+  position: relative;
+  z-index: 1;
 }
 
-/* --- MODIFICAÇÕES AQUI --- */
+/* --- SPACE BACKGROUND & STARS --- */
+/* Define o fundo fixo do universo */
+.spaceBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+  z-index: -1;
+  overflow: hidden;
+}
+
+/* Função para animar as estrelas subindo */
+@keyframes animStar {
+  from { transform: translateY(0px); }
+  to { transform: translateY(-2000px); }
+}
+
+.stars1, .stars2, .stars3 {
+  background: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+/* Estrelas Pequenas */
+.stars1 {
+  width: 1px;
+  height: 1px;
+  background: transparent;
+  box-shadow: 144px 564px #FFF , 845px 1439px #FFF , 1575px 448px #FFF , 320px 1230px #FFF , 1800px 200px #FFF , 400px 400px #FFF, 1000px 1000px #FFF, 50px 50px #FFF, 1200px 800px #FFF, 600px 150px #FFF, 900px 1600px #FFF, 1400px 600px #FFF, 200px 900px #FFF, 1700px 1300px #FFF, 1100px 300px #FFF;
+  animation: animStar 50s linear infinite;
+}
+.stars1:after {
+  content: " ";
+  position: absolute;
+  top: 2000px;
+  width: 1px;
+  height: 1px;
+  background: transparent;
+  box-shadow: 144px 564px #FFF , 845px 1439px #FFF , 1575px 448px #FFF , 320px 1230px #FFF , 1800px 200px #FFF , 400px 400px #FFF, 1000px 1000px #FFF, 50px 50px #FFF, 1200px 800px #FFF, 600px 150px #FFF, 900px 1600px #FFF, 1400px 600px #FFF, 200px 900px #FFF, 1700px 1300px #FFF, 1100px 300px #FFF;
+}
+
+/* Estrelas Médias */
+.stars2 {
+  width: 2px;
+  height: 2px;
+  background: transparent;
+  box-shadow: 500px 200px #FFF, 1200px 1500px #FFF, 1600px 400px #FFF, 100px 1000px #FFF, 800px 800px #FFF;
+  animation: animStar 100s linear infinite;
+}
+.stars2:after {
+  content: " ";
+  position: absolute;
+  top: 2000px;
+  width: 2px;
+  height: 2px;
+  background: transparent;
+  box-shadow: 500px 200px #FFF, 1200px 1500px #FFF, 1600px 400px #FFF, 100px 1000px #FFF, 800px 800px #FFF;
+}
+
+/* Estrelas Grandes */
+.stars3 {
+  width: 3px;
+  height: 3px;
+  background: transparent;
+  box-shadow: 900px 100px #FFF, 300px 1400px #FFF, 1500px 900px #FFF;
+  animation: animStar 150s linear infinite;
+}
+.stars3:after {
+  content: " ";
+  position: absolute;
+  top: 2000px;
+  width: 3px;
+  height: 3px;
+  background: transparent;
+  box-shadow: 900px 100px #FFF, 300px 1400px #FFF, 1500px 900px #FFF;
+}
+
+/* --- NAVBAR (Glassmorphism) --- */
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%; /* Ocupa a largura total da tela */
-  background: rgba(248, 249, 250, 0.8);
-  backdrop-filter: blur(10px);
+  width: 100%;
+  background: rgba(11, 13, 23, 0.7); /* Escuro e transparente */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   z-index: 1000;
-  border-bottom: 1px solid #e0e8f0;
+  border-bottom: 1px solid var(--glass-border);
 }
 
 .navbarInner {
@@ -44,12 +128,14 @@
 .logo {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--dark-blue);
+  color: var(--text-primary);
+  letter-spacing: 1px;
 }
 
 .logoImage {
   width: 40px;
   height: 40px;
+  filter: drop-shadow(0 0 5px var(--primary-color)); /* Glow no logo */
   transition: transform 0.3s;
 }
 
@@ -64,7 +150,7 @@
 }
 
 .link {
-  color: var(--dark-text);
+  color: var(--text-secondary);
   text-decoration: none;
   font-weight: 500;
   transition: all 0.3s ease;
@@ -72,76 +158,76 @@
 }
 
 .link:hover {
-  color: var(--primary-blue);
-}
-
-.link::after {
-  content: "";
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--primary-blue);
-  transition: width 0.3s;
-}
-
-.link:hover::after {
-  width: 100%;
+  color: var(--accent-color);
+  text-shadow: 0 0 8px var(--accent-color);
 }
 
 .cta {
-  background: var(--primary-blue);
-  color: white;
+  background: transparent;
+  color: var(--accent-color);
   padding: 0.7rem 1.5rem;
   border-radius: 30px;
   transition: all 0.3s;
   text-decoration: none;
+  border: 1px solid var(--accent-color);
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
 }
 
 .cta:hover {
-  transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 5px 15px rgba(61, 90, 254, 0.4);
+  background: var(--accent-color);
+  color: #000;
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.6);
+  transform: translateY(-2px);
 }
 
+/* --- HERO SECTION --- */
 .hero {
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(
-    135deg,
-    var(--primary-blue) 0%,
-    var(--dark-blue) 100%
-  );
   color: white;
   text-align: center;
-  padding-top: 80px; /* To offset the fixed navbar */
+  padding-top: 80px;
+  position: relative;
 }
 
 .heroContent {
-  max-width: 800px;
+  max-width: 900px;
   padding: 2rem;
+  background: rgba(0,0,0,0.2);
+  border-radius: 20px;
+  backdrop-filter: blur(2px);
 }
 
 .heroLogo {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   margin-bottom: 2rem;
-  filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
-  animation: fadeInUp 1s ease;
+  filter: drop-shadow(0 0 20px var(--primary-color));
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
 }
 
 .title {
-  font-size: 3.5rem;
+  font-size: 4.5rem;
   margin-bottom: 1rem;
+  background: linear-gradient(to right, #fff, #7b9cff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
   animation: fadeInUp 1s 0.2s ease backwards;
 }
 
 .subtitle {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   margin-bottom: 3rem;
-  opacity: 0.9;
+  color: var(--text-secondary);
   font-weight: 300;
   animation: fadeInUp 1s 0.4s ease backwards;
 }
@@ -160,6 +246,11 @@
   align-items: center;
   gap: 1rem;
   font-size: 1.2rem;
+  color: var(--accent-color);
+  background: var(--glass-bg);
+  padding: 10px 20px;
+  border-radius: 50px;
+  border: 1px solid var(--glass-border);
 }
 
 .scrollIndicator {
@@ -169,38 +260,26 @@
   transform: translateX(-50%);
   width: 24px;
   height: 40px;
-  border: 2px solid white;
+  border: 2px solid rgba(255, 255, 255, 0.5);
   border-radius: 25px;
-  opacity: 0.7;
 }
 
 .scrollIndicator::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 8px;
   left: 50%;
   transform: translateX(-50%);
   width: 4px;
   height: 8px;
-  background: white;
+  background: #fff;
   border-radius: 2px;
   animation: bounce 2s infinite;
 }
 
-@keyframes bounce {
-  0%,
-  100% {
-    top: 8px;
-    opacity: 1;
-  }
-  50% {
-    top: 20px;
-    opacity: 0;
-  }
-}
-
+/* --- SECTIONS --- */
 .section {
-  padding: 6rem 5%;
+  padding: 8rem 5%;
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -208,28 +287,18 @@
 }
 
 .profile {
-  background: #f8f9fa;
+  /* Não precisamos mais de fundo cinza, usamos o fundo estrelado */
+  background: transparent;
 }
 
 .sectionTitle {
-  font-size: 2.8rem;
+  font-size: 3rem;
   margin-bottom: 4rem;
-  color: var(--dark-blue);
+  color: var(--text-primary);
   text-align: center;
-  position: relative;
-  padding-bottom: 1rem;
-}
-
-.sectionTitle::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 4px;
-  background: var(--primary-blue);
-  border-radius: 2px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  text-shadow: 0 0 10px rgba(61, 90, 254, 0.5);
 }
 
 .sectionContent {
@@ -238,14 +307,20 @@
 }
 
 .bio {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   line-height: 1.8;
   max-width: 800px;
   margin: 0 auto 4rem auto;
   text-align: center;
-  color: #555;
+  color: #d1d5db;
+  background: var(--glass-bg);
+  padding: 2rem;
+  border-radius: 20px;
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(5px);
 }
 
+/* --- HIGHLIGHTS & SKILLS (Glass Cards) --- */
 .highlights {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -253,138 +328,134 @@
 }
 
 .highlightCard {
-  background: white;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
   padding: 2rem;
   border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
-  transition: transform 0.3s;
+  color: var(--text-primary);
+  transition: transform 0.3s, border-color 0.3s;
+  backdrop-filter: blur(5px);
 }
 
 .highlightCard:hover {
   transform: translateY(-10px);
+  border-color: var(--primary-color);
+  box-shadow: 0 0 20px rgba(61, 90, 254, 0.2);
 }
 
-.timelineList {
-  list-style-type: none;
-  padding-left: 1rem;
-  text-align: left;
+.highlightCard h4 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--accent-color);
+}
+
+.timelineDate {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  font-family: monospace;
 }
 
 .timelineList li {
-  position: relative;
-  padding-left: 1.5rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.8rem;
+  color: #e0e0e0;
 }
 
 .timelineList li::before {
-  content: "✓";
-  position: absolute;
-  left: 0;
-  color: var(--primary-blue);
-  font-weight: bold;
+  content: '▹';
+  color: var(--accent-color);
+  margin-right: 10px;
 }
 
 .skillsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 1.5rem;
 }
 
 .skillCard {
-  background: white;
-  padding: 2rem 1rem;
-  border-radius: 15px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  padding: 1.5rem 1rem;
+  border-radius: 12px;
   text-align: center;
   font-weight: 600;
   font-size: 1.1rem;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  color: var(--text-primary);
   transition: all 0.3s ease;
-  border: 1px solid #eee;
 }
 
 .skillCard:hover {
-  transform: translateY(-5px);
-  background: var(--primary-blue);
-  color: white;
-  border-color: var(--primary-blue);
+  transform: translateY(-5px) scale(1.05);
+  background: rgba(61, 90, 254, 0.2);
+  border-color: var(--primary-color);
+  box-shadow: 0 0 15px var(--primary-color);
 }
 
 .projectsGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2rem;
+  gap: 2.5rem;
 }
 
+/* --- FOOTER --- */
 .footer {
-  background: var(--dark-blue);
-  color: var(--light-text);
+  background: rgba(0, 0, 0, 0.6);
+  border-top: 1px solid var(--glass-border);
+  color: var(--text-secondary);
   padding: 4rem 5%;
   text-align: center;
+  backdrop-filter: blur(10px);
 }
 
 .footerTitle {
   font-size: 2rem;
   margin-bottom: 1rem;
-}
-
-.footerText {
-  font-size: 1.1rem;
-  margin-bottom: 2rem;
-  opacity: 0.8;
+  color: var(--text-primary);
 }
 
 .contactLink {
-  color: white;
-  font-size: 1.2rem;
+  color: var(--accent-color);
+  font-size: 1.3rem;
   text-decoration: none;
-  transition: opacity 0.3s;
+  transition: text-shadow 0.3s;
 }
 
 .contactLink:hover {
-  opacity: 0.8;
+  text-shadow: 0 0 10px var(--accent-color);
 }
 
 .socialLinks {
-  margin-top: 1.5rem;
+  margin-top: 2rem;
   display: flex;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 .socialIcon {
-  color: white;
+  color: var(--text-primary);
   transition: transform 0.3s, color 0.3s;
 }
 
 .socialIcon:hover {
-  transform: translateY(-3px);
-  color: var(--primary-blue);
+  transform: translateY(-5px);
+  color: var(--accent-color);
+  filter: drop-shadow(0 0 5px var(--accent-color));
 }
 
 @media (max-width: 768px) {
-  .title {
-    font-size: 2.5rem;
-  }
-  .navLinks {
-    display: none;
-  }
-  .skillsGrid,
-  .projectsGrid,
-  .highlights {
-    grid-template-columns: 1fr;
-  }
-  .navbarInner {
-    padding: 1rem 5%;
-  }
+  .title { font-size: 2.5rem; }
+  .navLinks { display: none; }
+  .skillsGrid, .projectsGrid, .highlights { grid-template-columns: 1fr; }
 }
 
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounce {
+  0%, 100% { top: 8px; opacity: 1; }
+  50% { top: 20px; opacity: 0; }
 }
